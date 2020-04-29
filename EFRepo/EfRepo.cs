@@ -1,13 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
 using Pocos;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EFRepo
 {
-    public class EfRepo : IDataRepository
+    public class EfRepo : Repository.EFRepo
     {
         private readonly StudentContext _context;
 
@@ -34,6 +36,7 @@ namespace EFRepo
 
         public StudentPoco Get(Guid Id)
         {
+            
             return _context.students.Find(Id);
         }
 
@@ -43,5 +46,7 @@ namespace EFRepo
             _context.SaveChanges();
              
         }
+
+    
     }
 }
